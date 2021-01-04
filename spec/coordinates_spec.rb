@@ -20,4 +20,13 @@ describe Coordinates do
     expect(coordinates.x).to eq(20)
     expect(coordinates.y).to eq(1)
   end
+
+  it 'compares equality correctly' do
+    coordinates = Coordinates.new(19, 2)
+
+    expect(coordinates).to eq(Coordinates.new(19, 2))
+    expect(coordinates).not_to eq(Coordinates.new(2, 19))
+    expect(coordinates).not_to eq(Coordinates.new(19, 0))
+    expect(coordinates).not_to eq(Coordinates.new(0, 2))
+  end
 end

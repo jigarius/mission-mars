@@ -12,4 +12,11 @@ class Coordinates
     @x = x
     @y = y
   end
+
+  sig { params(other: BasicObject).returns(T::Boolean) }
+  def ==(other)
+    return false unless Coordinates === other
+
+    @x == other.x && @y == other.y
+  end
 end
