@@ -7,3 +7,5 @@ gem 'rubocop', '~> 1.7', require: false
 
 gem 'sorbet', :group => :development
 gem 'sorbet-runtime'
+
+gem 'rspec', '~> 3.10', :group => :development
