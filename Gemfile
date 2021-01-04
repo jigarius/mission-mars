@@ -9,3 +9,5 @@ gem 'sorbet', :group => :development
 gem 'sorbet-runtime'
 
 gem 'rspec', '~> 3.10', :group => :development
+
+gem 'pry', '~> 0.13.1', :group => :development
