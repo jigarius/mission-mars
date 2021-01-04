@@ -18,12 +18,15 @@ class Compass
 
   sig { params(direction: Direction).void }
   def initialize(direction)
-    @direction_index = DIRECTIONS.key direction
+    @direction_index = T.let(
+      T.must(DIRECTIONS.key(direction)),
+      Integer
+    )
   end
 
   sig { returns(Direction) }
   def direction
-    DIRECTIONS[@direction_index]
+    T.must(DIRECTIONS[@direction_index])
   end
 
   sig { void }
