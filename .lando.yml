@@ -13,8 +13,13 @@ tooling:
     service: appserver
   irb:
     service: appserver
+  rspec:
+    service: appserver
+    dir: /app
+    cmd: bundle exec rspec
   bundle:
     service: appserver
+    dir: /app
   mission-mars:
     service: appserver
     cmd: ruby /app/mission-mars
