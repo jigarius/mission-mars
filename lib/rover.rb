@@ -33,7 +33,7 @@ class Rover
     when Direction::E
       @coordinates.x += 1
     when Direction::W
-      @coordinates.y -= 1
+      @coordinates.x -= 1
     else
       T.absurd(direction)
     end
