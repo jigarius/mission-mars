@@ -17,6 +17,10 @@ tooling:
     service: appserver
     dir: /app
     cmd: bundle exec rspec
+  srb:
+    service: appserver
+    dir: /app
+    cmd: bundle exec srb
   bundle:
     service: appserver
     dir: /app
