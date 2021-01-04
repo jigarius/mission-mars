@@ -3,3 +3,6 @@
 
 # Misc
 .DS_Store
+
+# Sorbet
+sorbet/rbi/errors.txt
