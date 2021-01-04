@@ -1,0 +1,5 @@
+# JetBrains IDE settings.
+.idea
+
+# Misc
+.DS_Store

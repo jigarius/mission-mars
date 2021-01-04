@@ -1,0 +1,20 @@
+name: mission-mars
+services:
+  appserver:
+    type: compose
+    services:
+      image: ruby:2.7.2
+      command: "tail -f /dev/null"
+    build:
+      - bundle install --gemfile=/app/Gemfile
+      - chmod +x /app/mission-mars
+tooling:
+  ruby:
+    service: appserver
+  irb:
+    service: appserver
+  bundle:
+    service: appserver
+  mission-mars:
+    service: appserver
+    cmd: ruby /app/mission-mars
