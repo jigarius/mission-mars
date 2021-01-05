@@ -26,6 +26,21 @@ class Rover
     )
   end
 
+  sig { params(commands: Command).void }
+  def execute(*commands)
+    commands.each do |command|
+      case command
+      when Command::M then move
+      when Command::L then @compass.turn_left
+      when Command::R then @compass.turn_right
+      else
+        T.absurd(command)
+      end
+    end
+  end
+
+  private
+
   sig { void }
   def move
     case direction = @compass.direction
@@ -42,5 +57,5 @@ class Rover
     end
   end
 
-  def_delegators :@compass, :direction, :turn_left, :turn_right
+  def_delegators :@compass, :direction
 end

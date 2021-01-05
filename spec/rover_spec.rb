@@ -16,45 +16,41 @@ describe Rover do
     expect(subject.coordinates).to eq(Coordinates.new(5, 5))
   end
 
-  it 'delegates .turn_left to Compass' do
-    expect_any_instance_of(Compass).to receive(:turn_left)
-    subject.turn_left
-  end
-
-  it 'delegates .turn_right to Compass' do
-    expect_any_instance_of(Compass).to receive(:turn_right)
-    subject.turn_right
-  end
-
   it 'delegates .direction to Compass' do
     expect_any_instance_of(Compass).to receive(:direction)
     subject.direction
   end
 
+  it 'delegates command L to Compass.turn_left' do
+    expect_any_instance_of(Compass).to receive(:turn_left)
+    subject.execute(Command::L)
+  end
+
+  it 'delegates command R to Compass.turn_right' do
+    expect_any_instance_of(Compass).to receive(:turn_right)
+    subject.execute(Command::R)
+  end
+
   it 'can move north' do
-    subject.move
+    subject.execute(Command::M)
 
     expect(subject.coordinates).to eq(Coordinates.new(5, 6))
   end
 
   it 'can move east' do
-    subject.turn_right
-    subject.move
+    subject.execute(Command::R, Command::M)
 
     expect(subject.coordinates).to eq(Coordinates.new(6, 5))
   end
 
   it 'can move west' do
-    subject.turn_left
-    subject.move
+    subject.execute(Command::L, Command::M)
 
     expect(subject.coordinates).to eq(Coordinates.new(4, 5))
   end
 
   it 'can move south' do
-    subject.turn_right
-    subject.turn_right
-    subject.move
+    subject.execute(Command::R, Command::R, Command::M)
 
     expect(subject.coordinates).to eq(Coordinates.new(5, 4))
   end
