@@ -9,6 +9,8 @@ class Controller
 
   sig { returns(T::Array[String]) }
   def execute
+    introduce
+
     input = Input::Parser.new.parse_stdin
 
     input.rover_entries.map do |re|
@@ -18,6 +20,14 @@ class Controller
   end
 
   private
+
+  sig { void }
+  def introduce
+    puts "Welcome to Mission Mars!\n"
+    puts "Enter your commands, followed by an empty line.\n"
+    puts "For more info, see the readme.\n"
+    puts "\n"
+  end
 
   sig { params(rover_entry: Input::RoverEntry).returns(Rover) }
   def handle_rover_entry(rover_entry)

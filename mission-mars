@@ -7,4 +7,6 @@ require 'sorbet-runtime'
 require_relative './lib/controller'
 
 controller = Controller.new
-controller.execute
+result = controller.execute
+
+result.each { |line| puts "#{line}\n" }
