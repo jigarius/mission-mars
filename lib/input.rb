@@ -1,9 +1,9 @@
 # typed: strict
 # frozen_string_literal: true
 
-require 'coordinates'
-require 'input/rover_entry'
-require 'input/parser'
+require_relative 'coordinates'
+require_relative 'input/rover_entry'
+require_relative 'input/parser'
 
 class Input
   extend T::Sig

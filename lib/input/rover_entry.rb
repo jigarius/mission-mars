@@ -1,9 +1,9 @@
 # typed: strict
 # frozen_string_literal: true
 
-require 'command'
-require 'coordinates'
-require 'direction'
+require_relative '../command'
+require_relative '../coordinates'
+require_relative '../direction'
 
 class Input
   class RoverEntry < T::Struct
