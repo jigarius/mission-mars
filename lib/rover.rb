@@ -1,8 +1,11 @@
 # typed: strict
 # frozen_string_literal: true
 
-require 'direction'
-require 'coordinates'
+require 'forwardable'
+
+require_relative 'compass'
+require_relative 'coordinates'
+require_relative 'direction'
 
 class Rover
   extend T::Sig

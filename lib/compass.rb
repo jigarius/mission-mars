@@ -1,7 +1,7 @@
 # typed: strict
 # frozen_string_literal: true
 
-require 'direction'
+require_relative 'direction'
 
 class Compass
   extend T::Sig
