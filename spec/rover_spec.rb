@@ -2,12 +2,16 @@
 # frozen_string_literal: true
 
 require 'rover'
+require 'command'
 
 describe Rover do
   subject do
     Rover.new(
       coordinates: Coordinates.new(5, 5),
-      direction: Direction::N
+      direction: Direction::N,
+      region: Region::SimpleRectangularRegion.new(
+        Coordinates.new(10, 10)
+      )
     )
   end
 
@@ -57,5 +61,69 @@ describe Rover do
     subject.execute(Command::M)
 
     expect(subject.coordinates).to eq(Coordinates.new(5, 4))
+  end
+
+  it 'cannot be instantiated outside allowed region' do
+    expect do
+      Rover.new(
+        coordinates: Coordinates.new(5, 5),
+        direction: Direction::N,
+        region: Region::SimpleRectangularRegion.new(
+          Coordinates.new(2, 2)
+        )
+      )
+    end.to raise_error(Rover::OutOfBoundsError)
+  end
+
+  it 'cannot move beyond the west boundary' do
+    rover = Rover.new(
+      coordinates: Coordinates.new(0, 1),
+      direction: Direction::W,
+      region: Region::SimpleRectangularRegion.new(
+        Coordinates.new(2, 2)
+      )
+    )
+
+    expect { rover.execute(Command::M) }
+      .to raise_error(Rover::OutOfBoundsError)
+  end
+
+  it 'cannot move beyond the east boundary' do
+    rover = Rover.new(
+      coordinates: Coordinates.new(2, 1),
+      direction: Direction::E,
+      region: Region::SimpleRectangularRegion.new(
+        Coordinates.new(2, 2)
+      )
+    )
+
+    expect { rover.execute(Command::M) }
+      .to raise_error(Rover::OutOfBoundsError)
+  end
+
+  it 'cannot move beyond the north boundary' do
+    rover = Rover.new(
+      coordinates: Coordinates.new(1, 2),
+      direction: Direction::N,
+      region: Region::SimpleRectangularRegion.new(
+        Coordinates.new(2, 2)
+      )
+    )
+
+    expect { rover.execute(Command::M) }
+      .to raise_error(Rover::OutOfBoundsError)
+  end
+
+  it 'cannot move beyond the south boundary' do
+    rover = Rover.new(
+      coordinates: Coordinates.new(1, 0),
+      direction: Direction::S,
+      region: Region::SimpleRectangularRegion.new(
+        Coordinates.new(2, 2)
+      )
+    )
+
+    expect { rover.execute(Command::M) }
+      .to raise_error(Rover::OutOfBoundsError)
   end
 end

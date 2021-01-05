@@ -20,6 +20,7 @@ class Controller
     introduce
 
     input = Input::Parser.new.parse_stdin
+    @martian_plateau = Region::SimpleRectangularRegion.new(input.limit)
 
     input.rover_entries.map do |re|
       rover = handle_rover_entry(re)
@@ -33,7 +34,8 @@ class Controller
   def handle_rover_entry(rover_entry)
     rover = Rover.new(
       coordinates: rover_entry.coordinates,
-      direction: rover_entry.direction
+      direction: rover_entry.direction,
+      region: @martian_plateau
     )
 
     rover_entry.commands.each { |c| rover.execute(c) }

@@ -6,18 +6,28 @@ require 'forwardable'
 require_relative 'compass'
 require_relative 'coordinates'
 require_relative 'direction'
+require_relative 'region'
 
 class Rover
   extend T::Sig
   extend Forwardable
+
+  class OutOfBoundsError < StandardError; end
 
   sig { returns(Coordinates) }
   attr_reader :coordinates
 
   def_delegator :@compass, :direction
 
-  sig { params(coordinates: Coordinates, direction: Direction).void }
-  def initialize(coordinates:, direction:)
+  sig do  params(
+    coordinates: Coordinates,
+    direction: Direction,
+    region: Region
+  ).void
+  end
+  def initialize(coordinates:, direction:, region:)
+    raise OutOfBoundsError unless region.contains? coordinates
+
     @coordinates = T.let(
       coordinates,
       Coordinates
@@ -26,6 +36,7 @@ class Rover
       Compass.new(direction),
       Compass
     )
+    @region = region
   end
 
   sig { params(command: Command).void }
@@ -43,17 +54,23 @@ class Rover
 
   sig { void }
   def move
+    new_coordinates = Coordinates.new(@coordinates.x, @coordinates.y)
+
     case direction = @compass.direction
     when Direction::N
-      @coordinates.y += 1
+      new_coordinates.y += 1
     when Direction::S
-      @coordinates.y -= 1
+      new_coordinates.y -= 1
     when Direction::E
-      @coordinates.x += 1
+      new_coordinates.x += 1
     when Direction::W
-      @coordinates.x -= 1
+      new_coordinates.x -= 1
     else
       T.absurd(direction)
     end
+
+    raise OutOfBoundsError unless @region.contains? new_coordinates
+
+    @coordinates = new_coordinates
   end
 end
