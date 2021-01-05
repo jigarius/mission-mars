@@ -17,10 +17,10 @@ class Input
       limit = parse_coordinates(T.must(lines.shift).strip)
 
       rover_entries = []
-      while lines.length > 0
+      until lines.empty?
         line1 = lines.shift&.strip
         line2 = lines.shift&.strip
-        raise InvalidInputError if line1.nil? or line2.nil?
+        raise InvalidInputError if line1.nil? || line2.nil?
 
         orientation = parse_rover_orientation(line1)
 
@@ -36,8 +36,8 @@ class Input
 
     sig { returns(Input) }
     def parse_stdin
-      lines = ""
-      while line = $stdin.gets.chomp
+      lines = ''
+      while (line = $stdin.gets.chomp)
         break if line.empty?
 
         lines += "#{line}\n"
@@ -69,18 +69,18 @@ class Input
 
       {
         coordinates: parse_coordinates(T.must(matches[:coordinates])),
-        direction: Direction.deserialize(T.must(matches[:direction]).downcase)
+        direction: Direction.deserialize(T.must(matches[:direction]).downcase),
       }
-    rescue KeyError => error
-      raise InvalidInputError, error.message
+    rescue KeyError => e
+      raise InvalidInputError, e.message
     end
 
     sig { params(line: String).returns(T::Array[Command]) }
     def parse_rover_commands(line)
       commands = line.split('')
       commands.map { |c| Command.deserialize(c.downcase) }
-    rescue KeyError => error
-      raise InvalidInputError, error.message
+    rescue KeyError => e
+      raise InvalidInputError, e.message
     end
   end
 end

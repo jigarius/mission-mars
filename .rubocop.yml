@@ -1,8 +1,33 @@
 AllCops:
   NewCops: enable
+  SuggestExtensions: false
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
 
 Naming/MethodParameterName:
   Enabled: false
 
+Style/AccessorGrouping:
+  Enabled: false
 Style/Documentation:
   Enabled: false
+Style/CaseEquality:
+  AllowOnConstant: true
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: no_comma
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/WordArray:
+  EnforcedStyle: brackets

@@ -9,7 +9,7 @@ describe Controller do
   it 'can execute valid input' do
     expected = [
       '1 3 N',
-      '5 1 E'
+      '5 1 E',
     ]
 
     input = [
@@ -18,7 +18,7 @@ describe Controller do
       "LMLMLMLMM\n",
       "3 3 E\n",
       "MMRMMRMRRM\n",
-      "\n"
+      "\n",
     ]
     allow($stdin).to receive(:gets).and_return(*input)
 

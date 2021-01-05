@@ -23,7 +23,7 @@ class Controller
   def handle_rover_entry(rover_entry)
     rover = Rover.new(
       coordinates: rover_entry.coordinates,
-      direction: rover_entry.direction,
+      direction: rover_entry.direction
     )
 
     rover_entry.commands.each { |c| rover.execute(c) }

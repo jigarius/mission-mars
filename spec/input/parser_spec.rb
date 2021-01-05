@@ -24,16 +24,16 @@ class Input
         ]
       )
 
-      result = subject.parse_string(<<~EOF)
+      result = subject.parse_string(<<~INPUT)
         5 5
         1 2 N
         LMRM
-      EOF
+      INPUT
 
       expect(result).to eq(expected)
     end
 
-    it "can parse stdin and create input" do
+    it 'can parse stdin and create input' do
       expected = Input.new(
         Coordinates.new(5, 5),
         [
@@ -54,7 +54,7 @@ class Input
         "5 5\n",
         "1 2 N\n",
         "LMRM\n",
-        "\n"
+        "\n",
       ]
       allow($stdin).to receive(:gets).and_return(*input)
 
@@ -83,7 +83,7 @@ class Input
         # Extra character after X and Y.
         "5 5 3\n" \
         "1 2 N\n" \
-        "LMRM",
+        "LMRM\n",
       ]
 
       inputs.each do |input|

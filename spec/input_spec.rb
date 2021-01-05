@@ -17,8 +17,8 @@ describe Input do
             Command::R,
             Command::M,
           ]
-        )
-      ],
+        ),
+      ]
     )
   end
 
@@ -56,8 +56,8 @@ describe Input do
             Command::R,
             Command::M,
           ]
-        )
-      ],
+        ),
+      ]
     )
 
     expect(subject).to eq(other)
@@ -76,8 +76,8 @@ describe Input do
             Command::R,
             Command::M,
           ]
-        )
-      ],
+        ),
+      ]
     )
 
     expect(subject).not_to eq(other)

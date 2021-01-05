@@ -11,7 +11,7 @@ class Compass
       0 => Direction::N,
       1 => Direction::E,
       2 => Direction::S,
-      3 => Direction::W
+      3 => Direction::W,
     },
     T::Hash[Integer, Direction]
   )

@@ -9,13 +9,13 @@ describe Direction do
       Direction::N,
       Direction::E,
       Direction::S,
-      Direction::W
+      Direction::W,
     ]
     expect(Direction.values).to eq(expected)
   end
 
   it 'can be converted to String' do
-    expected = ["N", "E", "S", "W"]
+    expected = ['N', 'E', 'S', 'W']
     expect(Direction.values.map(&:to_s)).to eq(expected)
   end
 end

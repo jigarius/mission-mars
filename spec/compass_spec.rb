@@ -4,8 +4,10 @@
 require 'compass'
 
 describe Compass do
-  subject { Compass.new(Direction::N) }
-  
+  subject do
+    Compass.new(Direction::N)
+  end
+
   it 'tracks left turns correctly' do
     expect(subject.direction).to equal(Direction::N)
 

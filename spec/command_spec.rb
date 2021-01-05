@@ -8,7 +8,7 @@ describe Command do
     expected = [
       Command::M,
       Command::L,
-      Command::R
+      Command::R,
     ]
     expect(Command.values).to eq(expected)
   end
