@@ -26,16 +26,14 @@ class Rover
     )
   end
 
-  sig { params(commands: Command).void }
-  def execute(*commands)
-    commands.each do |command|
-      case command
-      when Command::M then move
-      when Command::L then @compass.turn_left
-      when Command::R then @compass.turn_right
-      else
-        T.absurd(command)
-      end
+  sig { params(command: Command).void }
+  def execute(command)
+    case command
+    when Command::M then move
+    when Command::L then @compass.turn_left
+    when Command::R then @compass.turn_right
+    else
+      T.absurd(command)
     end
   end
 

@@ -38,19 +38,23 @@ describe Rover do
   end
 
   it 'can move east' do
-    subject.execute(Command::R, Command::M)
+    subject.execute(Command::R)
+    subject.execute(Command::M)
 
     expect(subject.coordinates).to eq(Coordinates.new(6, 5))
   end
 
   it 'can move west' do
-    subject.execute(Command::L, Command::M)
+    subject.execute(Command::L)
+    subject.execute(Command::M)
 
     expect(subject.coordinates).to eq(Coordinates.new(4, 5))
   end
 
   it 'can move south' do
-    subject.execute(Command::R, Command::R, Command::M)
+    subject.execute(Command::R)
+    subject.execute(Command::R)
+    subject.execute(Command::M)
 
     expect(subject.coordinates).to eq(Coordinates.new(5, 4))
   end

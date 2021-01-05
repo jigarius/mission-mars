@@ -26,7 +26,7 @@ class Controller
       direction: rover_entry.direction,
     )
 
-    rover.execute(*rover_entry.commands)
+    rover_entry.commands.each { |c| rover.execute(c) }
 
     rover
   end
