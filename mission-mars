@@ -1,3 +1,10 @@
 #!/usr/local/bin/ruby -w
+# typed: strict
+# frozen_string_literal: true
 
-puts "Mission mars!"
+require 'sorbet-runtime'
+
+require_relative './lib/controller'
+
+controller = Controller.new
+controller.execute
