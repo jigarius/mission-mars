@@ -2,6 +2,8 @@
 # frozen_string_literal: true
 
 class Direction < T::Enum
+  extend T::Sig
+
   enums do
     N = new
     E = new
