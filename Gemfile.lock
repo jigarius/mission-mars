@@ -26,6 +26,9 @@ GEM
     rspec-mocks (3.10.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
+    rspec-sorbet (1.8.0)
+      sorbet
+      sorbet-runtime
     rspec-support (3.10.1)
     rubocop (1.7.0)
       parallel (~> 1.10)
@@ -51,6 +54,7 @@ PLATFORMS
 DEPENDENCIES
   pry (~> 0.13.1)
   rspec (~> 3.10)
+  rspec-sorbet
   rubocop (~> 1.7)
   sorbet
   sorbet-runtime
