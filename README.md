@@ -55,3 +55,22 @@ The output for each rover should be it's final coordinates and heading.
 1 3 N
 5 1 E
 ```
+
+## Usage
+
+Ready for _Mission Mars_? You can run this code as follows:
+
+  * Install gems; `bundle install`.
+  * Add exec permissions to `mission-mars`; `chmod +x mission-mars`.
+  * Execute Mission Mars; `./mission-mars`.
+  * Enter input input in the required format, followed by an empty line.
+
+### Lando
+
+Since I used Lando during development, you can run this code easily with Lando.
+
+  * Install Lando.
+  * Clone this repository and `cd` into the directory.
+  * Run `lando start`.
+  * Run `lando mission-mars`.
+  * Enter input input in the required format, followed by an empty line.
