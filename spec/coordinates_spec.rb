@@ -28,4 +28,8 @@ describe Coordinates do
     expect(subject).not_to eq(Coordinates.new(19, 0))
     expect(subject).not_to eq(Coordinates.new(0, 2))
   end
+
+  it 'can be converted to String' do
+    expect(subject.to_s).to eq('19 2')
+  end
 end

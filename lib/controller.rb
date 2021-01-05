@@ -36,7 +36,7 @@ class Controller
 
       rover_entry.commands.each { |c| rover.execute(c) }
 
-      "#{rover.position.x} #{rover.position.y} #{rover.direction}"
+      "#{rover.position} #{rover.direction}"
     end
   end
 end

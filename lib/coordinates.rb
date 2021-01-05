@@ -19,4 +19,9 @@ class Coordinates
 
     @x == other.x && @y == other.y
   end
+
+  sig { returns(String) }
+  def to_s
+    return "#{x} #{y}"
+  end
 end
