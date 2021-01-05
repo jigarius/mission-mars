@@ -5,4 +5,4 @@
 .DS_Store
 
 # Sorbet
-sorbet/rbi/errors.txt
+sorbet/**/errors.txt
