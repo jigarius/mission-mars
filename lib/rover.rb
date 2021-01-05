@@ -14,6 +14,8 @@ class Rover
   sig { returns(Coordinates) }
   attr_reader :coordinates
 
+  def_delegator :@compass, :direction
+
   sig { params(coordinates: Coordinates, direction: Direction).void }
   def initialize(coordinates:, direction:)
     @coordinates = T.let(
@@ -54,6 +56,4 @@ class Rover
       T.absurd(direction)
     end
   end
-
-  def_delegators :@compass, :direction
 end
