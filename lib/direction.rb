@@ -8,4 +8,9 @@ class Direction < T::Enum
     S = new
     W = new
   end
+
+  sig { returns(String) }
+  def to_s
+    serialize.upcase
+  end
 end
