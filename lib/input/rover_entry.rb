@@ -9,14 +9,14 @@ class Input
   class RoverEntry < T::Struct
     extend T::Sig
 
-    const :coordinates, Coordinates
+    const :position, Coordinates
     const :direction, Direction
     const :commands, T::Array[Command]
 
     sig { params(other: BasicObject).returns(T::Boolean) }
     def ==(other)
       RoverEntry === other &&
-        coordinates == other.coordinates &&
+        position == other.position &&
         direction == other.direction &&
         commands == other.commands
     end

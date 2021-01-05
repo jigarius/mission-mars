@@ -12,7 +12,7 @@ class Input
         Coordinates.new(5, 5),
         [
           Input::RoverEntry.new(
-            coordinates: Coordinates.new(1, 2),
+            position: Coordinates.new(1, 2),
             direction: Direction::N,
             commands: [
               Command::L,
@@ -38,7 +38,7 @@ class Input
         Coordinates.new(5, 5),
         [
           Input::RoverEntry.new(
-            coordinates: Coordinates.new(1, 2),
+            position: Coordinates.new(1, 2),
             direction: Direction::N,
             commands: [
               Command::L,

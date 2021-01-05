@@ -7,7 +7,7 @@ require 'command'
 describe Rover do
   subject do
     Rover.new(
-      coordinates: Coordinates.new(5, 5),
+      position: Coordinates.new(5, 5),
       direction: Direction::N,
       region: Region::SimpleRectangularRegion.new(
         Coordinates.new(10, 10)
@@ -15,9 +15,13 @@ describe Rover do
     )
   end
 
-  it 'can .intialize' do
+  it 'intializes correctly' do
     expect(subject.direction).to eql(Direction::N)
-    expect(subject.coordinates).to eq(Coordinates.new(5, 5))
+    expect(subject.position).to eq(Coordinates.new(5, 5))
+    expect(subject.region)
+      .to eq(Region::SimpleRectangularRegion.new(
+        Coordinates.new(10, 10)
+      ))
   end
 
   it 'delegates .direction to Compass' do
@@ -38,21 +42,21 @@ describe Rover do
   it 'can move north' do
     subject.execute(Command::M)
 
-    expect(subject.coordinates).to eq(Coordinates.new(5, 6))
+    expect(subject.position).to eq(Coordinates.new(5, 6))
   end
 
   it 'can move east' do
     subject.execute(Command::R)
     subject.execute(Command::M)
 
-    expect(subject.coordinates).to eq(Coordinates.new(6, 5))
+    expect(subject.position).to eq(Coordinates.new(6, 5))
   end
 
   it 'can move west' do
     subject.execute(Command::L)
     subject.execute(Command::M)
 
-    expect(subject.coordinates).to eq(Coordinates.new(4, 5))
+    expect(subject.position).to eq(Coordinates.new(4, 5))
   end
 
   it 'can move south' do
@@ -60,13 +64,13 @@ describe Rover do
     subject.execute(Command::R)
     subject.execute(Command::M)
 
-    expect(subject.coordinates).to eq(Coordinates.new(5, 4))
+    expect(subject.position).to eq(Coordinates.new(5, 4))
   end
 
   it 'cannot be instantiated outside allowed region' do
     expect do
       Rover.new(
-        coordinates: Coordinates.new(5, 5),
+        position: Coordinates.new(5, 5),
         direction: Direction::N,
         region: Region::SimpleRectangularRegion.new(
           Coordinates.new(2, 2)
@@ -77,7 +81,7 @@ describe Rover do
 
   it 'cannot move beyond the west boundary' do
     rover = Rover.new(
-      coordinates: Coordinates.new(0, 1),
+      position: Coordinates.new(0, 1),
       direction: Direction::W,
       region: Region::SimpleRectangularRegion.new(
         Coordinates.new(2, 2)
@@ -90,7 +94,7 @@ describe Rover do
 
   it 'cannot move beyond the east boundary' do
     rover = Rover.new(
-      coordinates: Coordinates.new(2, 1),
+      position: Coordinates.new(2, 1),
       direction: Direction::E,
       region: Region::SimpleRectangularRegion.new(
         Coordinates.new(2, 2)
@@ -103,7 +107,7 @@ describe Rover do
 
   it 'cannot move beyond the north boundary' do
     rover = Rover.new(
-      coordinates: Coordinates.new(1, 2),
+      position: Coordinates.new(1, 2),
       direction: Direction::N,
       region: Region::SimpleRectangularRegion.new(
         Coordinates.new(2, 2)
@@ -116,7 +120,7 @@ describe Rover do
 
   it 'cannot move beyond the south boundary' do
     rover = Rover.new(
-      coordinates: Coordinates.new(1, 0),
+      position: Coordinates.new(1, 0),
       direction: Direction::S,
       region: Region::SimpleRectangularRegion.new(
         Coordinates.new(2, 2)

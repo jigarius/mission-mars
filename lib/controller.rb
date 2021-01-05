@@ -17,8 +17,6 @@ class Controller
 
   sig { returns(T::Array[String]) }
   def execute
-    introduce
-
     @input = Input::Parser.new.parse_stdin
     @martian_plateau = Region::SimpleRectangularRegion.new(@input.limit)
 
@@ -31,14 +29,14 @@ class Controller
   def handle_rover_entries
     @input.rover_entries.map do |rover_entry|
       rover = Rover.new(
-        coordinates: rover_entry.coordinates,
+        position: rover_entry.position,
         direction: rover_entry.direction,
         region: @martian_plateau
       )
 
       rover_entry.commands.each { |c| rover.execute(c) }
 
-      "#{rover.coordinates.x} #{rover.coordinates.y} #{rover.direction}"
+      "#{rover.position.x} #{rover.position.y} #{rover.direction}"
     end
   end
 end

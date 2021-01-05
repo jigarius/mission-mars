@@ -9,7 +9,7 @@ describe Input do
       Coordinates.new(5, 5),
       [
         Input::RoverEntry.new(
-          coordinates: Coordinates.new(5, 5),
+          position: Coordinates.new(5, 5),
           direction: Direction::N,
           commands: [
             Command::L,
@@ -29,7 +29,7 @@ describe Input do
   it 'returns .rover_entries' do
     expectation = [
       Input::RoverEntry.new(
-        coordinates: Coordinates.new(5, 5),
+        position: Coordinates.new(5, 5),
         direction: Direction::N,
         commands: [
           Command::L,
@@ -48,7 +48,7 @@ describe Input do
       Coordinates.new(5, 5),
       [
         Input::RoverEntry.new(
-          coordinates: Coordinates.new(5, 5),
+          position: Coordinates.new(5, 5),
           direction: Direction::N,
           commands: [
             Command::L,
@@ -68,7 +68,7 @@ describe Input do
       Coordinates.new(3, 3),
       [
         Input::RoverEntry.new(
-          coordinates: Coordinates.new(5, 5),
+          position: Coordinates.new(5, 5),
           direction: Direction::N,
           commands: [
             Command::L,

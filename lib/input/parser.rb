@@ -25,7 +25,7 @@ class Input
         orientation = parse_rover_orientation(line1)
 
         rover_entries << RoverEntry.new(
-          coordinates: orientation[:coordinates],
+          position: orientation[:coordinates],
           direction: orientation[:direction],
           commands: parse_rover_commands(line2)
         )

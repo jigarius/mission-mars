@@ -15,23 +15,23 @@ class Rover
   class OutOfBoundsError < StandardError; end
 
   sig { returns(Coordinates) }
-  attr_reader :coordinates
+  attr_reader :position
+
+  sig { returns(Region) }
+  attr_reader :region
 
   def_delegator :@compass, :direction
 
   sig do  params(
-    coordinates: Coordinates,
+    position: Coordinates,
     direction: Direction,
     region: Region
   ).void
   end
-  def initialize(coordinates:, direction:, region:)
-    raise OutOfBoundsError unless region.contains? coordinates
+  def initialize(position:, direction:, region:)
+    raise OutOfBoundsError unless region.contains? position
 
-    @coordinates = T.let(
-      coordinates,
-      Coordinates
-    )
+    @position = T.let(position, Coordinates)
     @compass = T.let(
       Compass.new(direction),
       Compass
@@ -54,23 +54,23 @@ class Rover
 
   sig { void }
   def move
-    new_coordinates = Coordinates.new(@coordinates.x, @coordinates.y)
+    new_position = Coordinates.new(@position.x, @position.y)
 
     case direction = @compass.direction
     when Direction::N
-      new_coordinates.y += 1
+      new_position.y += 1
     when Direction::S
-      new_coordinates.y -= 1
+      new_position.y -= 1
     when Direction::E
-      new_coordinates.x += 1
+      new_position.x += 1
     when Direction::W
-      new_coordinates.x -= 1
+      new_position.x -= 1
     else
       T.absurd(direction)
     end
 
-    raise OutOfBoundsError unless @region.contains? new_coordinates
+    raise OutOfBoundsError unless @region.contains? new_position
 
-    @coordinates = new_coordinates
+    @position = new_position
   end
 end
