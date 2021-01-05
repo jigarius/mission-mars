@@ -18,6 +18,9 @@ module Region
 
     include Region
 
+    sig { returns(Coordinates) }
+    attr_reader :vertex
+
     # Coordinates of 2 diagonally opposite corners of the rectangle.
     sig { params(vertex: Coordinates).void }
     def initialize(vertex)
@@ -35,6 +38,12 @@ module Region
       return false if coordinates.x > @vertex.x || coordinates.y > @vertex.y
 
       true
+    end
+
+    sig { params(other: BasicObject).returns(T::Boolean) }
+    def ==(other)
+      SimpleRectangularRegion === other &&
+        vertex === other.vertex
     end
   end
 end

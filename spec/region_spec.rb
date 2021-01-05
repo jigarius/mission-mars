@@ -11,6 +11,24 @@ module Region
       )
     end
 
+    it 'instantiates correctly' do
+      expect(subject.vertex).to eq(Coordinates.new(15, 20))
+    end
+
+    it 'checks equality correctly' do
+      region = SimpleRectangularRegion.new(
+        Coordinates.new(15, 20)
+      )
+      expect(subject).to eq(region)
+    end
+
+    it 'checks inequality correctly' do
+      region = SimpleRectangularRegion.new(
+        Coordinates.new(10, 20)
+      )
+      expect(subject).not_to eq(region)
+    end
+
     it 'returns true for coordinates that are inside' do
       cases = [
         # Comfortably inside.
