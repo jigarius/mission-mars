@@ -30,4 +30,4 @@ tooling:
     dir: /app
   mission-mars:
     service: appserver
-    cmd: ruby /app/mission-mars
+    cmd: /app/mission-mars
