@@ -2,9 +2,10 @@
 # frozen_string_literal: true
 
 require 'controller'
+require 'input/parser'
 
 describe Controller do
-  subject { Controller.new }
+  subject { Controller.new(Input::Parser.new) }
 
   it 'can execute valid input' do
     expected = [
