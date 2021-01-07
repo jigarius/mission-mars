@@ -22,6 +22,6 @@ class Coordinates
 
   sig { returns(String) }
   def to_s
-    return "#{x} #{y}"
+    "#{x} #{y}"
   end
 end

@@ -22,11 +22,12 @@ class Rover
 
   def_delegator :@compass, :direction
 
-  sig do  params(
-    position: Coordinates,
-    direction: Direction,
-    region: Region
-  ).void
+  sig do
+    params(
+      position: Coordinates,
+      direction: Direction,
+      region: Region
+    ).void
   end
   def initialize(position:, direction:, region:)
     raise OutOfBoundsError unless region.contains? position

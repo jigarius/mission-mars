@@ -19,9 +19,7 @@ describe Rover do
     expect(subject.direction).to eql(Direction::N)
     expect(subject.position).to eq(Coordinates.new(5, 5))
     expect(subject.region)
-      .to eq(Region::SimpleRectangularRegion.new(
-        Coordinates.new(10, 10)
-      ))
+      .to eq(Region::SimpleRectangularRegion.new(Coordinates.new(10, 10)))
   end
 
   it 'delegates .direction to Compass' do

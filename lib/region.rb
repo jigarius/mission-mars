@@ -43,7 +43,7 @@ module Region
     sig { params(other: BasicObject).returns(T::Boolean) }
     def ==(other)
       SimpleRectangularRegion === other &&
-        vertex === other.vertex
+        vertex == other.vertex
     end
   end
 end
