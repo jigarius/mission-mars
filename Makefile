@@ -14,9 +14,14 @@ lint:
 	bundle exec rubocop
 
 
+.PHONY: type-check
+type-check:
+	bundle exec srb tc
+
+
 .PHONY: test
 test:
-	echo "No op"
+	bundle exec rspec
 
 .PHONY: info
 info:

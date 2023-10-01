@@ -6,23 +6,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7'
+          bundler-cache: true
       - name: Prepare
-        run: bundle install
+        run: make provision
       - name: Lint
-        run: bundle exec rubocop
+        run: make lint
       - name: Type-check
-        run: bundle exec srb tc
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.7'
-      - name: Prepare
-        run: bundle install
+        run: make type-check
       - name: Test
-        run: bundle exec rspec
+        run: make test
