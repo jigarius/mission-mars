@@ -1,12 +1,10 @@
 #!/usr/local/bin/ruby
-# typed: strict
 # frozen_string_literal: true
 
-require 'sorbet-runtime'
-
 require_relative 'lib/controller'
+require_relative 'lib/input/parser'
 
-controller = Controller.new
+controller = Controller.new(Input::Parser.new)
 controller.introduce
 result = controller.execute
 

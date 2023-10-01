@@ -49,10 +49,7 @@ GEM
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
-    sorbet (0.5.11054)
-      sorbet-static (= 0.5.11054)
     sorbet-runtime (0.5.11054)
-    sorbet-static (0.5.11054-universal-darwin)
     unicode-display_width (2.4.2)
 
 PLATFORMS
@@ -63,8 +60,6 @@ DEPENDENCIES
   rspec (~> 3.10)
   rspec-sorbet
   rubocop (~> 1.7)
-  sorbet (~> 0.5)
-  sorbet-runtime
 
 RUBY VERSION
    ruby 2.7.2p137

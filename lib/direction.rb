@@ -1,18 +1,10 @@
-# typed: strict
 # frozen_string_literal: true
 
-class Direction < T::Enum
-  extend T::Sig
+require_relative 'enum'
 
-  enums do
-    N = new
-    E = new
-    S = new
-    W = new
-  end
-
-  sig { returns(String) }
-  def to_s
-    serialize.upcase
-  end
+class Direction < Enum
+  N = Direction.new 'N'
+  E = Direction.new 'E'
+  S = Direction.new 'S'
+  W = Direction.new 'W'
 end

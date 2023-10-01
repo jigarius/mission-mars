@@ -2,7 +2,7 @@ name: validation
 on:
   - push
 jobs:
-  lint:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,7 +14,5 @@ jobs:
         run: make provision
       - name: Lint
         run: make lint
-      - name: Type-check
-        run: make type-check
       - name: Test
         run: make test

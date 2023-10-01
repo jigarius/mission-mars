@@ -1,10 +1,9 @@
-# typed: strict
 # frozen_string_literal: true
 
-class Command < T::Enum
-  enums do
-    M = new
-    L = new
-    R = new
-  end
+require_relative 'enum'
+
+class Command < Enum
+  M = Command.new 'M'
+  L = Command.new 'L'
+  R = Command.new 'R'
 end

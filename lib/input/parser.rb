@@ -1,20 +1,16 @@
-# typed: strict
 # frozen_string_literal: true
 
 require_relative '../command'
 
 class Input
   class Parser
-    extend T::Sig
-
     class InvalidInputError < StandardError; end
 
-    sig { params(string: String).returns(Input) }
     def parse_string(string)
       lines = string.split("\n")
       raise InvalidInputError if lines.empty?
 
-      limit = parse_coordinates(T.must(lines.shift).strip)
+      limit = parse_coordinates(lines.shift.strip)
 
       rover_entries = []
       until lines.empty?
@@ -34,7 +30,6 @@ class Input
       Input.new(limit, rover_entries)
     end
 
-    sig { returns(Input) }
     def parse_stdin
       lines = ''
       while (line = $stdin.gets.chomp)
@@ -48,7 +43,6 @@ class Input
 
     private
 
-    sig { params(line: String).returns(Coordinates) }
     def parse_coordinates(line)
       matches = line.match(/^(\d+)\s+(\d+)$/)
       raise InvalidInputError unless matches
@@ -56,29 +50,21 @@ class Input
       Coordinates.new(matches[1].to_i, matches[2].to_i)
     end
 
-    sig do
-      params(line: String)
-        .returns({
-          coordinates: Coordinates,
-          direction: Direction,
-        })
-    end
     def parse_rover_orientation(line)
       matches = line.match(/^(?<coordinates>\d+\s+\d+)\s+(?<direction>\w)$/)
       raise InvalidInputError unless matches
 
       {
-        coordinates: parse_coordinates(T.must(matches[:coordinates])),
-        direction: Direction.deserialize(T.must(matches[:direction]).downcase),
+        coordinates: parse_coordinates(matches[:coordinates]),
+        direction: Direction.deserialize(matches[:direction].upcase),
       }
     rescue KeyError => e
       raise InvalidInputError, e.message
     end
 
-    sig { params(line: String).returns(T::Array[Command]) }
     def parse_rover_commands(line)
       commands = line.chars
-      commands.map { |c| Command.deserialize(c.downcase) }
+      commands.map { |c| Command.deserialize(c.upcase) }
     rescue KeyError => e
       raise InvalidInputError, e.message
     end

@@ -17,7 +17,7 @@ possible letters are `L`, `R` and `M`.
 moving from its current position. `M` makes the rover move forward by 1 grid
 point, and maintain the same direction.
 
-Assume that the square directly North from `(x, y)` is `(x, y+ 1)`.
+Assume that the square directly North from `(x, y)` is `(x, y + 1)`.
 
 ## Input
 
