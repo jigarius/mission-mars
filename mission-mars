@@ -4,7 +4,7 @@
 
 require 'sorbet-runtime'
 
-require_relative './lib/controller'
+require_relative 'lib/controller'
 
 controller = Controller.new
 controller.introduce

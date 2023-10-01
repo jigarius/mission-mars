@@ -11,8 +11,8 @@ class Input
 
     sig { params(string: String).returns(Input) }
     def parse_string(string)
-      lines = string.split(/\n/)
-      raise InvalidInputError if lines.length.zero?
+      lines = string.split("\n")
+      raise InvalidInputError if lines.empty?
 
       limit = parse_coordinates(T.must(lines.shift).strip)
 
@@ -77,7 +77,7 @@ class Input
 
     sig { params(line: String).returns(T::Array[Command]) }
     def parse_rover_commands(line)
-      commands = line.split('')
+      commands = line.chars
       commands.map { |c| Command.deserialize(c.downcase) }
     rescue KeyError => e
       raise InvalidInputError, e.message

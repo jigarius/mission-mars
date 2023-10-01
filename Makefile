@@ -11,7 +11,7 @@ provision:
 
 .PHONY: lint
 lint:
-	echo "No op"
+	bundle exec rubocop
 
 
 .PHONY: test
