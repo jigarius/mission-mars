@@ -1,4 +1,3 @@
-# typed: strict
 # frozen_string_literal: true
 
 require_relative '../command'
@@ -6,14 +5,15 @@ require_relative '../coordinates'
 require_relative '../direction'
 
 class Input
-  class RoverEntry < T::Struct
-    extend T::Sig
+  class RoverEntry
+    attr_reader :position, :direction, :commands
 
-    const :position, Coordinates
-    const :direction, Direction
-    const :commands, T::Array[Command]
+    def initialize(position:, direction:, commands:)
+      @position = position
+      @direction = direction
+      @commands = commands
+    end
 
-    sig { params(other: BasicObject).returns(T::Boolean) }
     def ==(other)
       RoverEntry === other &&
         position == other.position &&

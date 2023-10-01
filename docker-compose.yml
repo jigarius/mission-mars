@@ -1,0 +1,13 @@
+name: mission-mars
+version: "3"
+services:
+  main:
+    image: ruby:mission-mars
+    container_name: mission-mars-main
+    command: "tail -f /dev/null"
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: .docker/main/Dockerfile
+    volumes:
+      - .:/app

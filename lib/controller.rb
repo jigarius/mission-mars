@@ -1,13 +1,9 @@
-# typed: strict
 # frozen_string_literal: true
 
 require_relative 'input'
 require_relative 'rover'
 
 class Controller
-  extend T::Sig
-
-  sig { void }
   def introduce
     puts "Welcome to Mission Mars!\n"
     puts "Enter your commands, followed by an empty line.\n"
@@ -15,14 +11,12 @@ class Controller
     puts "\n"
   end
 
-  sig { params(parser: Input::Parser).void }
   def initialize(parser)
     @parser = parser
-    @martian_plateau = T.let(nil, T.nilable(Region))
-    @input = T.let(nil, T.nilable(Input))
+    @martian_plateau = nil
+    @input = nil
   end
 
-  sig { returns(T::Array[String]) }
   def execute
     @input = @parser.parse_stdin
     @martian_plateau = Region::SimpleRectangularRegion.new(@input.limit)
@@ -32,7 +26,6 @@ class Controller
 
   private
 
-  sig { returns(T::Array[String]) }
   def handle_rover_entries
     raise RuntimeError unless @input
 
@@ -40,7 +33,7 @@ class Controller
       rover = Rover.new(
         position: rover_entry.position,
         direction: rover_entry.direction,
-        region: T.must(@martian_plateau)
+        region: @martian_plateau
       )
 
       rover_entry.commands.each { |c| rover.execute(c) }

@@ -19,6 +19,9 @@ Naming/MethodParameterName:
 
 Style/AccessorGrouping:
   Enabled: false
+Style/ClassVars:
+  Exclude:
+    - 'lib/enum.rb'
 Style/Documentation:
   Enabled: false
 Style/CaseEquality:
