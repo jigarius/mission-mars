@@ -65,12 +65,15 @@ Ready for _Mission Mars_? You can run this code as follows:
   * Execute Mission Mars; `./mission-mars`.
   * Enter input input in the required format, followed by an empty line.
 
-### Lando
+### Docker Compose
 
-Since I used Lando during development, you can run this code easily with Lando.
+This project uses Docker Compose for development. Here's how you can fire up a
+development or test environment.
 
-  * Install Lando.
+  * Install Docker Compose.
   * Clone this repository and `cd` into the directory.
-  * Run `lando start`.
-  * Run `lando mission-mars`.
+  * Run `docker compose up -d --build`.
+  * Run `docker compose start`.
+  * Run `make ssh`.
+  * Run `./mission-mars`.
   * Enter input input in the required format, followed by an empty line.
